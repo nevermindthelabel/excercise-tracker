@@ -10,9 +10,7 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-console.log(mongoURI);
-
-mongoose.connect(mongoURI, { useNewUrlParser: true, useCreateIndex: true }
+mongoose.connect(mongoURI, { useNewUrlParser: true, useCreateIndex: true, useUnifiedTopology: true }
 );
 const connection = mongoose.connection;
 
