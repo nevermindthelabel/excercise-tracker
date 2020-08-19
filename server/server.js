@@ -4,6 +4,8 @@ const cors = require('cors');
 const PORT = process.env.port || 3001;
 const mongoose = require('mongoose');
 const mongoURI = process.env.mongoURI;
+const exerciseRoutes = require('./routes/exercises');
+const usersRoutes = require('./routes/users');
 
 const app = express();
 
@@ -19,8 +21,7 @@ connection.once('open', () => {
   console.log("MongoDB database connection established successfully");
 })
 
-app.get('/', (req, res) => {
-  res.json({ success: true })
-})
+app.use('/exercises', exerciseRoutes);
+app.use('/users', usersRoutes);
 
 app.listen(PORT, console.log(`backend server running on port http://localhost:${PORT}`));
