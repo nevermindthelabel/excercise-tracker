@@ -1,11 +1,11 @@
 const router = require('express').Router();
 const Exercise = require('../models/Exercise');
 
-router.route('/').get(async (req, res) => {
+router.route('/').get((req, res) => {
   try {
-    await res.json({ success: true });
+    Exercise.find().then(exercises => res.json(exercises))
   } catch (err) {
-    console.error(err);
+    res.status(400).json(`Error: ${err}`)
   }
 });
 
