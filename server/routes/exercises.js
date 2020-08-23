@@ -9,4 +9,11 @@ router.route('/').get((req, res) => {
   }
 });
 
+router.route('/add').post((req, res) => {
+  const username = req.body.ussername;
+  const description = req.body.description;
+  const duration = req.body.duration;
+  const date = req.body.date;
+});
+
 module.exports = router;
