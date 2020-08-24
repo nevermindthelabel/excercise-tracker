@@ -12,8 +12,19 @@ router.route('/').get((req, res) => {
 router.route('/add').post((req, res) => {
   const username = req.body.ussername;
   const description = req.body.description;
-  const duration = req.body.duration;
-  const date = req.body.date;
+  const duration = Number(req.body.duration);
+  const date = Date.parse(req.body.date);
+
+  const newExercise = new Exercise({
+    username,
+    description,
+    duration,
+    date
+  });
+
+  newExercise.save()
+  .then(() => res.json('Excercise added'))
+  .catch(err => res.status(400).json(err));
 });
 
 module.exports = router;
