@@ -4,3 +4,6 @@ content-type: application/json
 {
     "username": "timmy tommy"
 }
+
+GET http://localhost:3001/users
+Content-Type: application/json
