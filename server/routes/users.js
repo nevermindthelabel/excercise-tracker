@@ -20,7 +20,16 @@ router.route('/add').post(async(req, res) => {
   } catch (err) {
     res.status(400).json(err);
   }
+});
 
+router.route('/delete/:id').delete(async(req, res) => {
+  const { id } = req.params;
+  try {
+    await User.deleteOne({ _id: id });
+    res.json({ success: `User id ${id} deleted` });
+  } catch (err) {
+    res.status(400).json(err);
+  }
 });
 
 module.exports = router;
